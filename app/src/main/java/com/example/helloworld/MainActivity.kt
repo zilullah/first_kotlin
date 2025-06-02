@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,35 +46,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-   val image = painterResource(R.drawable.bg_compose_background);
-    fun click() {
-        println("Hallo")
-    }
-    Box(modifier=Modifier.fillMaxSize()) {
-        Column(verticalArrangement = Arrangement.Center, modifier = modifier) {
+    Box(modifier=Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Column(modifier=modifier, horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
-                painter = image,
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                alpha = 0.5F,
+                painter = painterResource(R.drawable.ic_task_completed),
+                contentDescription = "",
             )
             Text(
-                text = "Jetpack Compose Tutorial",
-                modifier = modifier.padding(16.dp),
-                fontSize = 24.sp,
+                text = "All task complete",
+                modifier = modifier.padding(top = 24.dp, bottom = 8.dp),
+                fontWeight = FontWeight(600),
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify
             )
             Text(
-                text= stringResource(R.string.from),
-                modifier = modifier
-                    .padding(16.dp),
-                textAlign = TextAlign.Justify
-
-            )
-            Text(
-                text= stringResource(R.string.from),
-                modifier = modifier
-                    .padding(16.dp),
+                text = "Nice Work!",
+                modifier = modifier,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Justify
             )
         }

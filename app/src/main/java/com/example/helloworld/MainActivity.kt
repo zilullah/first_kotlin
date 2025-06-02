@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.helloworld.ui.theme.HelloWorldTheme
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.layout.ContentScale
@@ -44,31 +45,37 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-   val image = painterResource(R.drawable.androidparty);
-    Surface(color = MaterialTheme.colorScheme.background) {
-        Box(modifier=modifier) {
+   val image = painterResource(R.drawable.bg_compose_background);
+    fun click() {
+        println("Hallo")
+    }
+    Box(modifier=Modifier.fillMaxSize()) {
+        Column(verticalArrangement = Arrangement.Center, modifier = modifier) {
             Image(
                 painter = image,
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 alpha = 0.5F,
             )
-            Column(verticalArrangement = Arrangement.Center, modifier = modifier) {
-                Text(
-                    text = stringResource(R.string.happy_birthday),
-                    modifier = modifier.padding(24.dp),
-                    fontSize = 100.sp,
-                    lineHeight = 116.sp,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text= stringResource(R.string.from),
-                    fontSize = 36.sp,
-                    modifier = modifier
-                        .padding(16.dp)
-                        .align(alignment = Alignment.CenterHorizontally)
-                )
-            }
+            Text(
+                text = "Jetpack Compose Tutorial",
+                modifier = modifier.padding(16.dp),
+                fontSize = 24.sp,
+                textAlign = TextAlign.Justify
+            )
+            Text(
+                text= stringResource(R.string.from),
+                modifier = modifier
+                    .padding(16.dp),
+                textAlign = TextAlign.Justify
+
+            )
+            Text(
+                text= stringResource(R.string.from),
+                modifier = modifier
+                    .padding(16.dp),
+                textAlign = TextAlign.Justify
+            )
         }
     }
 }

@@ -23,8 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.helloworld.ui.theme.HelloWorldTheme
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
@@ -46,26 +48,60 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-    Box(modifier=Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Column(modifier=modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-            Image(
-                painter = painterResource(R.drawable.ic_task_completed),
-                contentDescription = "",
+    Column(modifier=modifier.fillMaxSize()) {
+        Row(modifier=modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = "Makan",
+                description = "Minum",
+                background = Color(0xFFEADDFF),
+                modifier = modifier.weight(1f)
             )
-            Text(
-                text = "All task complete",
-                modifier = modifier.padding(top = 24.dp, bottom = 8.dp),
-                fontWeight = FontWeight(600),
-                fontSize = 18.sp,
-                textAlign = TextAlign.Justify
-            )
-            Text(
-                text = "Nice Work!",
-                modifier = modifier,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify
+            ComposableInfoCard(
+                title = "Makan2",
+                description = "Minum1",
+                background = Color(0xFFD0BCFF),
+                modifier = modifier.weight(1f)
             )
         }
+        Row(modifier=modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = "Makan3",
+                description = "Minum3",
+                background = Color(0xFFEADDFF),
+                modifier = modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = "Makan4",
+                description = "Minum4",
+                background = Color(0xFFD0BCFF),
+                modifier = modifier.weight(1f)
+            )
+        }
+    }
+}
+
+@Composable
+private fun ComposableInfoCard(
+    modifier: Modifier=Modifier,
+    title:String,
+    description:String,
+    background:Color=Color.DarkGray,
+) {
+    Column(modifier=modifier.fillMaxSize()
+        .background(background)
+        .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally)
+    {
+        Text(
+            text=title,
+            modifier=Modifier.padding(bottom = 16.dp),
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text=description,
+            textAlign = TextAlign.Justify
+        )
     }
 }
 

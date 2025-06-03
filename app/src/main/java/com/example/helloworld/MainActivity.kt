@@ -27,10 +27,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.materialIcon
+import androidx.compose.material3.Icon
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,60 +56,63 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-    Column(modifier=modifier.fillMaxSize()) {
-        Row(modifier=modifier.weight(1f)) {
-            ComposableInfoCard(
-                title = "Makan",
-                description = "Minum",
-                background = Color(0xFFEADDFF),
-                modifier = modifier.weight(1f)
-            )
-            ComposableInfoCard(
-                title = "Makan2",
-                description = "Minum1",
-                background = Color(0xFFD0BCFF),
-                modifier = modifier.weight(1f)
-            )
-        }
-        Row(modifier=modifier.weight(1f)) {
-            ComposableInfoCard(
-                title = "Makan3",
-                description = "Minum3",
-                background = Color(0xFFEADDFF),
-                modifier = modifier.weight(1f)
-            )
-            ComposableInfoCard(
-                title = "Makan4",
-                description = "Minum4",
-                background = Color(0xFFD0BCFF),
-                modifier = modifier.weight(1f)
-            )
+    Column(modifier=modifier.fillMaxSize().background(Color.Red),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween) {
+        Surface {
+            Column(
+                modifier=modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                Image(
+                    painter = painterResource(R.drawable.android_logo),
+                    contentDescription = "this is android logo",
+                    modifier = modifier
+                        .height(130.dp)
+                        .width(130.dp)
+                        .background(Color.Blue)
+                        .padding(16.dp)
+                )
+                Text(
+                    "Jenifer Doe",
+                    fontSize = 32.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = modifier.padding(16.dp)
+                    )
+                Text("Android Developer ExtraOrdinary")
+                Spacer(modifier = Modifier.weight(1f))
+                Contact()
+            }
         }
     }
 }
 
 @Composable
-private fun ComposableInfoCard(
-    modifier: Modifier=Modifier,
-    title:String,
-    description:String,
-    background:Color=Color.DarkGray,
-) {
-    Column(modifier=modifier.fillMaxSize()
-        .background(background)
-        .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally)
-    {
-        Text(
-            text=title,
-            modifier=Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text=description,
-            textAlign = TextAlign.Justify
-        )
+private  fun Contact(modifier: Modifier=Modifier) {
+    Column(verticalArrangement = Arrangement.Bottom, horizontalAlignment = Alignment.CenterHorizontally) {
+        Row(modifier=modifier.padding(vertical = 8.dp)) {
+            Icon(
+                imageVector = Icons.Filled.Home,
+                contentDescription = "Home Icon"
+            )
+            Text("Makan",modifier=modifier.padding(start = 8.dp))
+        }
+        Row(modifier=modifier.padding(vertical = 8.dp)) {
+            Icon(
+                imageVector = Icons.Filled.Home,
+                contentDescription = "Home Icon"
+            )
+            Text("Makan",modifier=modifier.padding(start = 8.dp))
+        }
+        Row(modifier=modifier.padding(vertical = 8.dp)) {
+            Icon(
+                imageVector = Icons.Filled.Home,
+                contentDescription = "Home Icon"
+            )
+            Text("Makan",modifier=modifier.padding(start = 8.dp))
+        }
     }
 }
 
